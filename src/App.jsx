@@ -34,12 +34,14 @@ function App() {
     };
     setTodo([...todo, task]);
   };
-  const onRemove = (i) => {
-    const task = todo.splice(i,1)
-    setTodo([...todo, task]);;
+  const onRemove = (id) => {
+    console.log("id",id)
+    const task = [...todo].filter((e) => e.id !== id);
+    setTodo([task]);
   };
   return (
     <>
+    {console.log(todo)}
       <ToDoList todoList={todo} onAdd={onAdd} onRemove={onRemove} />
     </>
   );
