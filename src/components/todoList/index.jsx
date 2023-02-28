@@ -104,10 +104,10 @@ export const ToDoList = ({ todoList, onAdd, onRemove }) => {
           <div className="items">
             {console.log(todoList)}
             {listDoing.map((e) => (
-                <>
-                  <TodoItems key={e.id} {...e} remove={(id) => onRemove(id)} />
-                </>
-              ))}
+              <>
+                <TodoItems key={e.id} {...e} remove={(id) => onRemove(id)} />
+              </>
+            ))}
           </div>
         </div>
         <div className="board"></div>
@@ -128,7 +128,6 @@ export const ToDoList = ({ todoList, onAdd, onRemove }) => {
 const TodoItems = ({ id, name, isComplete, remove }) => {
   return (
     <ToDoItemsStyle className={isComplete ? "isComplete" : ""}>
-      {console.log(id)}
       <div className="name">{name}</div>
       <button>✓</button>
       <button onClick={() => remove(id)}>X</button>
