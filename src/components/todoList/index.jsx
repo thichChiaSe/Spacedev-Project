@@ -59,32 +59,30 @@ const ToDoItemsStyle = styled.div`
     }
   }
 `;
-export const ToDoList = ({ todoList, onAdd, onRemove }) => {
-  // const listDoing = todoList?.filter((e) => !e.isComplete);
-  // const listDone = todoList?.filter((e) => e.isComplete);
+export const ToDoList = ({ todoList, onAdd, onRemove, onCompleted }) => {
+  const listDoing = todoList?.filter((e) => !e.isComplete);
+  const listDone = todoList?.filter((e) => e.isComplete);
 
   const [value, setValue] = useState("");
-  const [listDoing, setListDoing] = useState([]);
-  const [listDone, setListDone] = useState([]);
+  // const [listDoing, setListDoing] = useState([]);
+  // const [listDone, setListDone] = useState([]);
 
-  useEffect(() => {
-    if (todoList) {
-      console.log(todoList);
-      const adata = [...todoList];
-      setListDoing(adata?.filter((e) => !e.isComplete));
-      setListDone(adata?.filter((e) => e.isComplete));
-    }
-  }, [todoList]);
+  // useEffect(() => {
+  //   if (todoList) {
+  //     console.log(todoList);
+  //     const adata = [...todoList];
+  //     setListDoing(adata?.filter((e) => !e.isComplete));
+  //     setListDone(adata?.filter((e) => e.isComplete));
+  //   }
+  // }, [todoList]);
 
   const _onAdd = () => {
-    console.log(value);
     onAdd(value);
     setValue("");
   }; //các component nào có tiền tố là _ là sử dụng nội bộ
   // function này dùng để set lại giá trị không có khoảng trắng dư thừa ở đầu và cuối
   return (
     <TodoListStyle>
-      {console.log(listDoing)}
       <div className="input-group">
         <input
           value={value}
@@ -102,10 +100,14 @@ export const ToDoList = ({ todoList, onAdd, onRemove }) => {
         <div className="board">
           <div className="title">Công việc đang làm</div>
           <div className="items">
-            {console.log(todoList)}
             {listDoing.map((e) => (
               <>
-                <TodoItems key={e.id} {...e} remove={(id) => onRemove(id)} />
+                <TodoItems
+                  key={e.id}
+                  {...e}
+                  remove={(id) => onRemove(id)}
+                  onCompleteds={(id) => onCompleted(id)}
+                />
               </>
             ))}
           </div>
@@ -125,11 +127,11 @@ export const ToDoList = ({ todoList, onAdd, onRemove }) => {
   );
 };
 
-const TodoItems = ({ id, name, isComplete, remove }) => {
+const TodoItems = ({ id, name, isComplete, remove, onCompleteds }) => {
   return (
     <ToDoItemsStyle className={isComplete ? "isComplete" : ""}>
       <div className="name">{name}</div>
-      <button>✓</button>
+      <button onClick={() => onCompleteds(id)}>✓</button>
       <button onClick={() => remove(id)}>X</button>
     </ToDoItemsStyle>
   );

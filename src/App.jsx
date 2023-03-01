@@ -35,14 +35,25 @@ function App() {
     setTodo([...todo, task]);
   };
   const onRemove = (id) => {
-    console.log("id", id);
     const task = [...todo].filter((e) => e.id !== id);
     setTodo(task);
   };
-  return ( 
+  const onCompleted = (id) => {
+    const task = todo.find((e) => e.id === id);
+    if (task) {
+      task.isComplete = true;
+      setTodo([...todo]);
+    }
+  };
+  return (
     <>
       {console.log(todo)}
-      <ToDoList todoList={todo} onAdd={onAdd} onRemove={onRemove} />
+      <ToDoList
+        todoList={todo}
+        onAdd={onAdd}
+        onRemove={onRemove}
+        onCompleted={onCompleted}
+      />
     </>
   );
 }
