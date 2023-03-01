@@ -81,10 +81,18 @@ export const ToDoList = ({ todoList, onAdd, onRemove, onCompleted }) => {
     setValue("");
   }; //các component nào có tiền tố là _ là sử dụng nội bộ
   // function này dùng để set lại giá trị không có khoảng trắng dư thừa ở đầu và cuối
+
+  // hàm xử lý nhập dữ liệu trong input khi nhắn enter
+  const onKeyUp = (e) => {
+    if (e.key === "Enter") {
+      _onAdd();
+    }
+  };
   return (
     <TodoListStyle>
       <div className="input-group">
         <input
+        onKeyUp={onKeyUp}
           value={value}
           onChange={(ev) => setValue(ev.target.value)}
           type="text"
