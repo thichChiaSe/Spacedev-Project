@@ -1,30 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import { ToDoList } from "./components/todoList";
 
+const Store = "TO_DO_APP";
 function App() {
-  const [todo, setTodo] = useState([
-    {
-      id: 1,
-      name: "Cong việc a",
-      isComplete: false,
-    },
-    {
-      id: 2,
-      name: "Cong việc b",
-      isComplete: false,
-    },
-    {
-      id: 3,
-      name: "Cong việc c",
-      isComplete: true,
-    },
-    {
-      id: 4,
-      name: "Cong việc d",
-      isComplete: true,
-    },
-  ]);
+  //lưu giá trị vào localstorage
+  const [todo, setTodo] = useState(() => {
+    let list = localStorage.getItem(Store);
+    if (list) {
+      return JSON.parse(list);
+    }
+    return [];
+  });
+  useEffect(() => {
+    localStorage.setItem(Store, JSON.stringify(todo));
+  }, [todo]);
 
   const onAdd = (name) => {
     const task = {
