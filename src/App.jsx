@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import { ToDoList } from "./components/todoList";
+import { Contact } from "./pages/contact";
 
 const Store = "TO_DO_APP";
 function App() {
@@ -37,13 +38,14 @@ function App() {
   };
   return (
     <>
-      {console.log(todo)}
+      {/* {console.log(todo)}
       <ToDoList
         todoList={todo}
         onAdd={onAdd}
         onRemove={onRemove}
         onCompleted={onCompleted}
-      />
+      /> */}
+      <Contact />
     </>
   );
 }
