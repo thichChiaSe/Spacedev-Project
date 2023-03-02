@@ -129,6 +129,18 @@ export const Contact = () => {
                 value={form.title || ""}
                 onChange={(ev) => setForm({ ...form, title: ev.target.value })}
               />
+              <Field
+                text=" Nội dung"
+                required
+                value={form.content || ""}
+                onChange={(ev) =>
+                  setForm({ ...form, content: ev.target.value })
+                }
+                renderInput={(props) => (
+                  <textarea {...props} cols={30} rows={10} />
+                  //render props
+                )}
+              />
               {/* <label>
                 <p>
                   Nội dung<span>*</span>
