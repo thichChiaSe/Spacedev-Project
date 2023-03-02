@@ -2,10 +2,18 @@ import React, { useState } from "react";
 import { Field } from "../components/Field";
 
 export const Contact = () => {
-  const [form, setForm] = useState([]);
+  const [form, setForm] = useState({});
   const handleSubmit = (ev) => {
     ev.preventDefault(); //ngăn chặn refresh trang
     console.log(form);
+  };
+
+  // optimize code
+  const register = (name) => {
+    return {
+      value: form[name],
+      onChange: (ev) => setForm({ ...form, [name]: ev.target.value }),
+    };
   };
   return (
     <div>
@@ -96,31 +104,27 @@ export const Contact = () => {
                 text="Họ và tên"
                 required
                 placeholder="Họ và tên"
-                onChange={(ev) => setForm({ ...form, name: ev.target.value })}
-                value={form.name || ""}
+                {...register("name")}
+                // onChange={(ev) => setForm({ ...form, name: ev.target.value })}
+                // value={form.name || ""}
               />
 
               <Field
                 text="Phone"
                 required
                 placeholder="0123456789"
-                onChange={(ev) => setForm({ ...form, phone: ev.target.value })}
-                value={form.phone || ""}
+                {...register("phone")}
               />
               <Field
                 text="Email"
                 required
                 placeholder="Email của bạn"
-                value={form.email || ""}
-                onChange={(ev) => setForm({ ...form, email: ev.target.value })}
+                {...register("email")}
               />
               <Field
                 text="Website"
                 placeholder="Đường dẫn website http://"
-                value={form.website || ""}
-                onChange={(ev) =>
-                  setForm({ ...form, website: ev.target.value })
-                }
+                {...register("website")}
               />
               <Field
                 text="Tiêu đề"
@@ -132,10 +136,7 @@ export const Contact = () => {
               <Field
                 text=" Nội dung"
                 required
-                value={form.content || ""}
-                onChange={(ev) =>
-                  setForm({ ...form, content: ev.target.value })
-                }
+                {...register("content")}
                 renderInput={(props) => (
                   <textarea {...props} cols={30} rows={10} />
                   //render props
