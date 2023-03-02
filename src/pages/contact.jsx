@@ -3,9 +3,47 @@ import { Field } from "../components/Field";
 
 export const Contact = () => {
   const [form, setForm] = useState({});
+  const [error, setError] = useState({
+    name: "Name is required",
+    phone: "Phone is required",
+    email: "Email is required",
+    content: "Content is required",
+    title: "Title is required",
+  });
+
   const handleSubmit = (ev) => {
     ev.preventDefault(); //ngăn chặn refresh trang
     console.log(form);
+    const errorObject = {};
+    // validate
+    if (!form.name?.trim()) {
+      errorObject.name = "Please fill in this field";
+    }
+    if (!form.phone?.trim()) {
+      errorObject.phone = "Please fill in this field";
+    } else if (!/(84|0[3|5|7|8|9])+([0-9]{8})\b/.test(form.phone)) {
+      errorObject.phone = "Định dạng phone không đúng";
+    }
+    if (!form.email?.trim()) {
+      errorObject.email = "Please fill in this field";
+    } else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(form.email)) {
+      errorObject.email = "Định dạng email không đúng";
+    }
+    if (
+      form.website &&
+      !/[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/.test(
+        form.website
+      )
+    ) {
+      errorObject.website = "Định dạng website không đúng";
+    }
+    if (!form.title?.trim()) {
+      errorObject.title = "Please fill in this field";
+    }
+    if (!form.content?.trim()) {
+      errorObject.content = "Please fill in this field";
+    }
+    setError(errorObject);
   };
 
   // optimize code
@@ -105,6 +143,7 @@ export const Contact = () => {
                 required
                 placeholder="Họ và tên"
                 {...register("name")}
+                error={error.name}
                 // onChange={(ev) => setForm({ ...form, name: ev.target.value })}
                 // value={form.name || ""}
               />
@@ -114,29 +153,33 @@ export const Contact = () => {
                 required
                 placeholder="0123456789"
                 {...register("phone")}
+                error={error.phone}
               />
               <Field
                 text="Email"
                 required
                 placeholder="Email của bạn"
                 {...register("email")}
+                error={error.email}
               />
               <Field
                 text="Website"
                 placeholder="Đường dẫn website http://"
                 {...register("website")}
+                error={error.website}
               />
               <Field
                 text="Tiêu đề"
                 required
                 placeholder="Tiêu đề liên hệ"
-                value={form.title || ""}
-                onChange={(ev) => setForm({ ...form, title: ev.target.value })}
+                error={error.title}
+                {...register("title")}
               />
               <Field
                 text=" Nội dung"
                 required
                 {...register("content")}
+                error={error.content}
                 renderInput={(props) => (
                   <textarea {...props} cols={30} rows={10} />
                   //render props
