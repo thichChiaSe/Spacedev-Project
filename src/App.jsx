@@ -1,10 +1,21 @@
 import { useEffect, useState } from "react";
-import reactLogo from "./assets/react.svg";
+import { Route, Routes } from "react-router-dom";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
-import { ToDoList } from "./components/todoList";
 import { Contact } from "./pages/contact";
+import { Course } from "./pages/course";
+import { Home } from "./pages";
 import { Register } from "./pages/register";
+import { Team } from "./pages/team";
+import { Project } from "./pages/project";
+import { FAQ } from "./pages/faq";
+import { Payment } from "./pages/payment";
+import { Coin } from "./pages/coin";
+import { SignIn } from "./pages/auth/signin";
+import { SignOut } from "./pages/auth/signOut";
+import { CourseDetail } from "./pages/courseDetail";
+import { ResetPassword } from "./pages/auth/resetPasswrod";
+import { Page404 } from "./pages/404";
 
 // const Store = "TO_DO_APP";
 function App() {
@@ -49,8 +60,23 @@ function App() {
         onCompleted={onCompleted}
       /> */}
       <Header />
-      {/* <Contact/> */}
-      <Register />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/course" element={<Course />} />
+        <Route path="/course-detail" element={<CourseDetail />} />
+        <Route path="/team" element={<Team />} />
+        <Route path="/project" element={<Project />} />
+        <Route path="/payment" element={<Payment />} />
+        <Route path="/faq" element={<FAQ />} />
+        <Route path="/coin" element={<Coin />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signout" element={<SignOut />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="*" element={<Page404 />} />
+
+      </Routes>
       <Footer />
     </>
   );
