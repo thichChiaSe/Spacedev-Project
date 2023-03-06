@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Field } from "../components/Field";
+import { useForm } from "../hooks/useForm";
 
 export const Contact = () => {
   const [form, setForm] = useState({});
@@ -11,6 +12,7 @@ export const Contact = () => {
     title: "Title is required",
   });
 
+  // const {} = useForm({});
   const handleSubmit = (ev) => {
     ev.preventDefault(); //ngăn chặn refresh trang
     console.log(form);

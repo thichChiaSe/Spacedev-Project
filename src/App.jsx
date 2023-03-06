@@ -49,6 +49,7 @@ function App() {
         onCompleted={onCompleted}
       /> */}
       <Header />
+      {/* <Contact/> */}
       <Register />
       <Footer />
     </>
