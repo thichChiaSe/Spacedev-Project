@@ -16,6 +16,12 @@ import { SignOut } from "./pages/auth/signOut";
 import { CourseDetail } from "./pages/courseDetail";
 import { ResetPassword } from "./pages/auth/resetPasswrod";
 import { Page404 } from "./pages/404";
+import { MyProfile } from "./pages/profile";
+import { ProfileLayout } from "./layout/ProfileLayout";
+import { MyCourse } from "./pages/profile/myCourse";
+import { MyCoin } from "./pages/profile/myCoin";
+import { MyPayment } from "./pages/profile/payment";
+import { MainLayout } from "./layout/MainLayout";
 
 // const Store = "TO_DO_APP";
 function App() {
@@ -61,21 +67,29 @@ function App() {
       /> */}
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/course" element={<Course />} />
-        <Route path="/course-detail" element={<CourseDetail />} />
-        <Route path="/team" element={<Team />} />
-        <Route path="/project" element={<Project />} />
-        <Route path="/payment" element={<Payment />} />
-        <Route path="/faq" element={<FAQ />} />
-        <Route path="/coin" element={<Coin />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/signout" element={<SignOut />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
-        <Route path="*" element={<Page404 />} />
-
+        <Route element={<MainLayout />}>
+          <Route index element={<Home />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/course-detail" element={<CourseDetail />} />
+          <Route path="/team" element={<Team />} />
+          <Route path="/project" element={<Project />} />
+          <Route path="/payment" element={<Payment />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/coin" element={<Coin />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signout" element={<SignOut />} />
+          <Route path="/profile" element={<ProfileLayout />}>
+            {/* nested route */}
+            <Route path="/profile/course" element={<MyCourse />} />
+            <Route path="/profile/coin" element={<MyProfile />} />
+            <Route path="/profile/project" element={<MyCoin />} />
+            <Route path="/profile/payment" element={<MyPayment />} />
+            {/* <Route path="/profile/course/course-detail" element={<CourseDetail />} /> */}
+          </Route>
+          <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="*" element={<Page404 />} />
+        </Route>
       </Routes>
       <Footer />
     </>
