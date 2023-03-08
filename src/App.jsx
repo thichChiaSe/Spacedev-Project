@@ -65,7 +65,6 @@ function App() {
         onRemove={onRemove}
         onCompleted={onCompleted}
       /> */}
-      <Header />
       <Routes>
         <Route element={<MainLayout />}>
           <Route index element={<Home />} />
@@ -82,8 +81,8 @@ function App() {
           <Route path="/profile" element={<ProfileLayout />}>
             {/* nested route */}
             <Route path="/profile/course" element={<MyCourse />} />
-            <Route path="/profile/coin" element={<MyProfile />} />
-            <Route path="/profile/project" element={<MyCoin />} />
+            <Route path="/profile/coin" element={<MyCoin />} />
+            <Route path="/profile/project" element={<MyProfile />} />
             <Route path="/profile/payment" element={<MyPayment />} />
             {/* <Route path="/profile/course/course-detail" element={<CourseDetail />} /> */}
           </Route>
@@ -91,7 +90,6 @@ function App() {
           <Route path="*" element={<Page404 />} />
         </Route>
       </Routes>
-      <Footer />
     </>
   );
 }

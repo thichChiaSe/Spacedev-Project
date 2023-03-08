@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const MyCourse = () => {
   return (
@@ -6,13 +7,13 @@ export const MyCourse = () => {
       <div className="list row">
         <div className="col-md-6 course">
           <div className="wrap">
-            <a className="cover" href="./course-detail.html">
+            <Link className="cover" to="./course-detail.html">
               <img src="/img/img1.png" alt="" />
-            </a>
+            </Link>
             <div className="info">
-              <a className="name" href="./course-detail.html">
+              <Link className="name" to="./course-detail.html">
                 Reactjs Advanced
-              </a>
+              </Link>
               <p className="des">
                 One of the best corporate fashion brands in Sydney
               </p>
@@ -24,21 +25,21 @@ export const MyCourse = () => {
                 </div>
                 <div className="name">Vương Đặng</div>
               </div>
-              <a href="/register.html" className="register-btn">
+              <Link to="/register.html" className="register-btn">
                 6,000,000 đ
-              </a>
+              </Link>
             </div>
           </div>
         </div>
         <div className="col-md-6 course">
           <div className="wrap">
-            <a className="cover" href="./course-detail.html">
+            <Link className="cover" to="./course-detail.html">
               <img src="/img/img1.png" alt="" />
-            </a>
+            </Link>
             <div className="info">
-              <a className="name" href="./course-detail.html">
+              <Link className="name" to="./course-detail.html">
                 Reactjs Advanced
-              </a>
+              </Link>
               <p className="des">
                 One of the best corporate fashion brands in Sydney
               </p>
@@ -50,9 +51,9 @@ export const MyCourse = () => {
                 </div>
                 <div className="name">Vương Đặng</div>
               </div>
-              <a href="/register.html" className="register-btn">
+              <Link to="/register.html" className="register-btn">
                 6,000,000 đ
-              </a>
+              </Link>
             </div>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, NavLink } from "react-router-dom";
 
 export const Footer = () => {
   return (
@@ -13,40 +14,40 @@ export const Footer = () => {
             </p>
             <p className="phone">(+84) 949 816 596</p>
             <div className="social">
-              <a href="#">
-                <img src="img/fb-icon.png" alt="" />
-              </a>
-              <a href="#">
-                <img src="img/email-icon.png" alt="" />
-              </a>
-              <a href="#">
-                <img src="img/skype-icon.png" alt="" />
-              </a>
+              <Link to="#">
+                <img src="/img/fb-icon.png" alt="" />
+              </Link>
+              <Link to="#">
+                <img src="/img/email-icon.png" alt="" />
+              </Link>
+              <Link to="#">
+                <img src="/img/skype-icon.png" alt="" />
+              </Link>
             </div>
           </div>
           <div className="right">
             <nav>
               <ul>
                 <li>
-                  <a href="./">Trang chủ</a>
+                  <NavLink to="./">Trang chủ</NavLink>
                 </li>
                 <li>
-                  <a href="./course-list.html">Khóa Học</a>
+                  <NavLink to="./course-detail">Khóa Học</NavLink>
                 </li>
                 <li>
-                  <a href="#">Thanh toán</a>
+                  <NavLink to="./payment">Thanh toán</NavLink>
                 </li>
                 <li>
-                  <a href="#">Điều khoản</a>
+                  <NavLink to="#">Điều khoản</NavLink>
                 </li>
               </ul>
             </nav>
           </div>
         </div>
-        <a href="#" className="back-to-top">
+        <Link to="#" className="back-to-top">
           <div className="line" />
           CUỘN LÊN
-        </a>
+        </Link>
       </div>
       <div className="copy-right">
         <div className="container">

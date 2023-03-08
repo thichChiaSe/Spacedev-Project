@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 export const Header = () => {
+  const { patchName } = useLocation();
+  useEffect(() => {
+    closeNav();
+  }, [patchName]);
+
+  const toggleMenu = () => {
+    document.body.classList.toggle("menu-is-show");
+  };
+  const closeNav = () => {
+    document.body.classList.remove("menu-is-show");
+  };
+
   return (
     <>
       <header id="header">
         <div className="wrap">
-          <div className="menu-hambeger">
+          <div className="menu-hambeger" onClick={toggleMenu}>
             <div className="button">
               <span />
               <span />
@@ -13,30 +26,30 @@ export const Header = () => {
             </div>
             <span className="text">mesnu</span>
           </div>
-          <a href="./" className="logo">
-            <img src="img/logo.svg" alt="" />
+          <Link to="./" className="logo">
+            <img src="/img/logo.svg" alt="" />
             <h1>Spacedev</h1>
-          </a>
+          </Link>
           <div className="right">
             <div className="have-login">
               <div className="account">
-                <a href="./profile.html" className="info">
+                <Link to="./profile.html" className="info">
                   <div className="name">Đặng Thuyền Vương</div>
                   <div className="avatar">
-                    <img src="img/avt.png" alt="" />
+                    <img src="/img/avt.png" alt="" />
                   </div>
-                </a>
+                </Link>
               </div>
               <div className="hamberger"></div>
               <div className="sub">
-                <a href="#">Khóa học của tôi</a>
-                <a href="#">Thông tin tài khoản</a>
-                <a href="#">Đăng xuất</a>
+                <Link to="#">Khóa học của tôi</Link>
+                <Link to="#">Thông tin tài khoản</Link>
+                <Link to="#">Đăng xuất</Link>
               </div>
             </div>
             {/* <div class="not-login bg-none">
-          <a href="#" class="btn-register">Đăng nhập</a>
-          <a href="login.html" class="btn main btn-open-login">Đăng ký</a>
+          <Link to="#" class="btn-register">Đăng nhập</Link>
+          <Link to="login.html" class="btn main btn-open-login">Đăng ký</Link>
       </div> */}
           </div>
         </div>
@@ -45,32 +58,35 @@ export const Header = () => {
       <nav className="nav">
         <ul>
           <li>
-            <a href="./signin.html">Đăng ký / Đăng nhập</a>
+            <Link to="./signin.html">Đăng ký / Đăng nhập</Link>
           </li>
           <li>
-            <a href="./profile.html" className="account">
+            <Link to="./profile" className="account">
               <div className="avatar">
-                <img src="img/avt.png" alt="" />
+                <img src="/img/avt.png" alt="" />
               </div>
               <div className="name">Đặng Thuyền Vương</div>
-            </a>
+            </Link>
           </li>
           <li>
-            <a className="active" href="./">
-              Trang chủ
-            </a>
+            <NavLink onClick={closeNav()} to="./team">
+              Spacedev Team
+            </NavLink>
           </li>
           <li>
-            <a href="./team.html">Spacedev Team</a>
+            <NavLink onClick={closeNav()} to="./course-detail">
+              Khóa Học
+            </NavLink>
           </li>
           <li>
-            <a href="./course-list.html">Khóa Học</a>
+            <NavLink onClick={closeNav()} to="./project">
+              Dự Án
+            </NavLink>
           </li>
           <li>
-            <a href="./project.html">Dự Án</a>
-          </li>
-          <li>
-            <a href="./contact.html">Liên hệ</a>
+            <NavLink onClick={closeNav()} to="./contact">
+              Liên hệ
+            </NavLink>
           </li>
         </ul>
       </nav>
