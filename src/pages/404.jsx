@@ -1,4 +1,5 @@
 import React from "react";
+import { PATH } from "../config/patch";
 
 export const Page404 = () => {
   return (
@@ -8,7 +9,7 @@ export const Page404 = () => {
           <section>
             <h2 className="main-title">404</h2>
             <p>Không tìm thấy trang</p>
-            <a href="#" className="btn main round">
+            <a href={PATH.home} className="btn main round">
               Trang chủ
             </a>
           </section>

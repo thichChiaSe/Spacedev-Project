@@ -1,5 +1,4 @@
 const PROFILE_PATH = "/profile";
-
 export const PATH = {
   home: "/",
   team: "/team",
@@ -15,6 +14,7 @@ export const PATH = {
   signUp: "/signup",
   resetPassword: "/resetpassword",
   register: "/register",
+  policy: "/policy",
   profile: {
     index: PROFILE_PATH,
     coin: PROFILE_PATH + "/coin",
@@ -22,6 +22,11 @@ export const PATH = {
     courseDetail: PROFILE_PATH + "/course-detail",
     payment: PROFILE_PATH + "/payment",
     project: PROFILE_PATH + "/project",
+  },
+  social: {
+    fb: "https://facebook.com",
+    skype: "https://skype.com",
+    mail: "https://gmail.com",
   },
   page404: "*",
 };

@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
+import { PATH } from "../../config/patch";
 
 export const Header = () => {
   const { patchName } = useLocation();
@@ -24,16 +25,16 @@ export const Header = () => {
               <span />
               <span />
             </div>
-            <span className="text">mesnu</span>
+            <span className="text">menu</span>
           </div>
-          <Link to="./" className="logo">
+          <Link to={PATH.home} className="logo">
             <img src="/img/logo.svg" alt="" />
             <h1>Spacedev</h1>
           </Link>
           <div className="right">
             <div className="have-login">
               <div className="account">
-                <Link to="./profile.html" className="info">
+                <Link to={PATH.profile.index} className="info">
                   <div className="name">Đặng Thuyền Vương</div>
                   <div className="avatar">
                     <img src="/img/avt.png" alt="" />
@@ -42,9 +43,9 @@ export const Header = () => {
               </div>
               <div className="hamberger"></div>
               <div className="sub">
-                <Link to="#">Khóa học của tôi</Link>
-                <Link to="#">Thông tin tài khoản</Link>
-                <Link to="#">Đăng xuất</Link>
+                <Link to={PATH.profile.course}>Khóa học của tôi</Link>
+                <Link to={PATH.profile.index}>Thông tin tài khoản</Link>
+                <Link to={PATH.signOut}>Đăng xuất</Link>
               </div>
             </div>
             {/* <div class="not-login bg-none">
@@ -58,7 +59,7 @@ export const Header = () => {
       <nav className="nav">
         <ul>
           <li>
-            <Link to="./signin.html">Đăng ký / Đăng nhập</Link>
+            <Link to={PATH.register}>Đăng ký / Đăng nhập</Link>
           </li>
           <li>
             <Link to="./profile" className="account">
@@ -69,22 +70,22 @@ export const Header = () => {
             </Link>
           </li>
           <li>
-            <NavLink onClick={closeNav()} to="./team">
+            <NavLink onClick={closeNav()} to={PATH.team}>
               Spacedev Team
             </NavLink>
           </li>
           <li>
-            <NavLink onClick={closeNav()} to="./course-detail">
+            <NavLink onClick={closeNav()} to={PATH.courseDetail}>
               Khóa Học
             </NavLink>
           </li>
           <li>
-            <NavLink onClick={closeNav()} to="./project">
+            <NavLink onClick={closeNav()} to={PATH.project}>
               Dự Án
             </NavLink>
           </li>
           <li>
-            <NavLink onClick={closeNav()} to="./contact">
+            <NavLink onClick={closeNav()} to={PATH.contact}>
               Liên hệ
             </NavLink>
           </li>

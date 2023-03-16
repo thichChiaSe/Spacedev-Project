@@ -1,5 +1,6 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { PATH } from "../config/patch";
 
 export const ProfileLayout = () => {
   return (
@@ -18,8 +19,18 @@ export const ProfileLayout = () => {
             </p>
           </div>
           <div className="container">
+            <div className="tab">
+              <div className="tab-title">
+                <NavLink to={PATH.profile.index} className="active">
+                  Thông tin tài khoản
+                </NavLink>
+                <NavLink to={PATH.profile.course}>Khóa học của bạn</NavLink>
+                <NavLink to={PATH.profile.project}>Dự án đã làm</NavLink>
+                <NavLink to={PATH.profile.payment}>Lịch sử thanh toán</NavLink>
+                <NavLink to={PATH.profile.coin}>Quản lý coin của tôi</NavLink>
+              </div>
+            </div>
             {/* outlet giúp react-router-dom chỉ định rõ nơi nào sẽ được render ra */}
-            <Outlet />
           </div>
         </section>
       </div>

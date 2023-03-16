@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import { PATH } from "../../config/patch";
 
 export const Footer = () => {
   return (
@@ -14,13 +15,13 @@ export const Footer = () => {
             </p>
             <p className="phone">(+84) 949 816 596</p>
             <div className="social">
-              <Link to="#">
+              <Link to={PATH.social.fb}>
                 <img src="/img/fb-icon.png" alt="" />
               </Link>
-              <Link to="#">
+              <Link to={PATH.social.mail}>
                 <img src="/img/email-icon.png" alt="" />
               </Link>
-              <Link to="#">
+              <Link to={PATH.social.skype}>
                 <img src="/img/skype-icon.png" alt="" />
               </Link>
             </div>
@@ -29,16 +30,16 @@ export const Footer = () => {
             <nav>
               <ul>
                 <li>
-                  <NavLink to="./">Trang chủ</NavLink>
+                  <NavLink to={PATH.home}>Trang chủ</NavLink>
                 </li>
                 <li>
-                  <NavLink to="./course-detail">Khóa Học</NavLink>
+                  <NavLink to={PATH.courseDetail}>Khóa Học</NavLink>
                 </li>
                 <li>
-                  <NavLink to="./payment">Thanh toán</NavLink>
+                  <NavLink to={PATH.payment}>Thanh toán</NavLink>
                 </li>
                 <li>
-                  <NavLink to="#">Điều khoản</NavLink>
+                  <NavLink to={PATH.policy}>Điều khoản</NavLink>
                 </li>
               </ul>
             </nav>
