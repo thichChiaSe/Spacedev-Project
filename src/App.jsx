@@ -22,7 +22,7 @@ import { MyCourse } from "./pages/profile/myCourse";
 import { MyCoin } from "./pages/profile/myCoin";
 import { MyPayment } from "./pages/profile/payment";
 import { MainLayout } from "./layout/MainLayout";
-
+import { PATH } from "./config/patch";
 // const Store = "TO_DO_APP";
 function App() {
   //lưu giá trị vào localstorage
@@ -68,26 +68,29 @@ function App() {
       <Routes>
         <Route element={<MainLayout />}>
           <Route index element={<Home />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/course-detail" element={<CourseDetail />} />
-          <Route path="/team" element={<Team />} />
-          <Route path="/project" element={<Project />} />
-          <Route path="/payment" element={<Payment />} />
-          <Route path="/faq" element={<FAQ />} />
-          <Route path="/coin" element={<Coin />} />
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/signout" element={<SignOut />} />
-          <Route path="/profile" element={<ProfileLayout />}>
+          <Route path={PATH.contact} element={<Contact />} />
+          <Route path={PATH.register} element={<Register />} />
+          <Route path={PATH.courseDetail} element={<CourseDetail />} />
+          <Route path={PATH.team} element={<Team />} />
+          <Route path={PATH.project} element={<Project />} />
+          <Route path={PATH.payment} element={<Payment />} />
+          <Route path={PATH.faq} element={<FAQ />} />
+          <Route path={PATH.coin} element={<Coin />} />
+          <Route path={PATH.signIn} element={<SignIn />} />
+          <Route path={PATH.signOut} element={<SignOut />} />
+          <Route path={PATH.profile.index} element={<ProfileLayout />}>
             {/* nested route */}
-            <Route path="/profile/course" element={<MyCourse />} />
-            <Route path="/profile/coin" element={<MyCoin />} />
-            <Route path="/profile/project" element={<MyProfile />} />
-            <Route path="/profile/payment" element={<MyPayment />} />
-            {/* <Route path="/profile/course/course-detail" element={<CourseDetail />} /> */}
+            <Route path={PATH.profile.course} element={<MyCourse />} />
+            <Route path={PATH.profile.coin} element={<MyCoin />} />
+            <Route path={PATH.profile.index} element={<MyProfile />} />
+            <Route path={PATH.profile.payment} element={<MyPayment />} />
+            <Route
+              path={PATH.profile.courseDetail}
+              element={<CourseDetail />}
+            />
           </Route>
-          <Route path="/reset-password" element={<ResetPassword />} />
-          <Route path="*" element={<Page404 />} />
+          <Route path={PATH.resetPassword} element={<ResetPassword />} />
+          <Route path={PATH.page404} element={<Page404 />} />
         </Route>
       </Routes>
     </>
